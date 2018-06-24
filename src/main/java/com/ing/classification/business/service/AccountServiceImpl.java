@@ -37,6 +37,18 @@ public class AccountServiceImpl implements AccountService {
         return resultBuilder.build();
     }
 
+    @Override
+    public AccountResult getBalance(Long customerId, String yearMonthStr) {
+        AccountResult.AccountResultBuilder resultBuilder = AccountResult.createBuilder(customerId);
+        resultBuilder.setYearMonth(yearMonthStr);
+        YearMonth yearMonth = YearMonth.parse(yearMonthStr);
+
+        List<Transaction> filteredTransactions = transactionFilterService.filterTransactionsToDate(customerId, yearMonth);
+        Double balance = filteredTransactions.stream().map(Transaction::getAmount).reduce(0D, (a, b) -> a + b);
+
+        return resultBuilder.setBalance(Double.valueOf(df.format(balance))).build();
+    }
+
     private void fireRules(AccountResult.AccountResultBuilder resultBuilder) {
         Facts facts = new Facts();
         facts.add("resultBuilder", resultBuilder);

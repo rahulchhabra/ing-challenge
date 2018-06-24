@@ -18,7 +18,7 @@ public class TransactionReaderTest {
 
     @Test
     public void readTransactions() {
-        assertEquals(2995, transactionReader.readTransactions().size());
+        assertEquals(3000, transactionReader.readTransactions().size());
     }
 
     @Test

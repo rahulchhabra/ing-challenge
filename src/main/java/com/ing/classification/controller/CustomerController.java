@@ -23,4 +23,13 @@ public class CustomerController {
 
         return ResponseEntity.ok(result);
     }
+
+    @RequestMapping(value = "/customerBalance/{customerId}/month/{yearMonth}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<AccountResult> customerBalance(@PathVariable("customerId") Long customerId,
+                                                         @PathVariable(value = "yearMonth") String yearMonth
+    ) {
+        AccountResult result = acService.getBalance(customerId, yearMonth);
+        return ResponseEntity.ok(result);
+    }
 }

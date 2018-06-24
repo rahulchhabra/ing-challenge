@@ -30,7 +30,6 @@ public class TransactionFilterServiceImpl implements TransactionFilterService {
     private List<Transaction> getTransactionsBetweenDateTime(Long customerId, LocalDateTime startDate, LocalDateTime endDate) {
         List<Transaction> completeList = transactionReader.readTransactions();
         List<Transaction> filteredTransactions = completeList.stream().filter(currTransaction -> {
-            boolean include = false;
             if(currTransaction.getCustomerId().equals(customerId) ) {
                 LocalDateTime transactionDateTime = LocalDateTime.ofInstant(currTransaction.getTransactionDate().toInstant(),
                         ZoneId.systemDefault());
@@ -43,7 +42,7 @@ public class TransactionFilterServiceImpl implements TransactionFilterService {
                 }
                 return true;
             }
-            return include;
+            return false;
         })
         .sorted(Comparator.comparing(Transaction::getTransactionDate))
         .collect(Collectors.toList());
@@ -53,9 +52,6 @@ public class TransactionFilterServiceImpl implements TransactionFilterService {
 
     @Override
     public List<Transaction> filterTransactionsToDate(Long customerId, YearMonth startMonth) {
-        LocalDateTime startDate = startMonth.plusMonths(-1).atEndOfMonth().atTime(LocalTime.MAX);
-        LocalDateTime endDate = LocalDateTime.now();
-
-        return getTransactionsBetweenDateTime(customerId, null, endDate);
+        return getTransactionsBetweenDateTime(customerId, null, LocalDateTime.now());
     }
 }

@@ -4,5 +4,7 @@ import com.ing.classification.result.AccountResult;
 
 public interface AccountService {
 
-    public AccountResult classifyCustomer(Long customerId, String yearMonth);
+    AccountResult classifyCustomer(Long customerId, String yearMonth);
+
+    AccountResult getBalance(Long customerId, String yearMonth);
 }
