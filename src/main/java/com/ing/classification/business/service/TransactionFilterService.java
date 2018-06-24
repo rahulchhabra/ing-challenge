@@ -1,4 +1,4 @@
-package com.ing.classification.service;
+package com.ing.classification.business.service;
 
 import com.ing.classification.result.Transaction;
 
