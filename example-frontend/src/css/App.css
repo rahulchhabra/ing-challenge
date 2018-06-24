@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -26,3 +25,45 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.no-customer-data {
+  margin-top: 30px;
+}
+
+.submit-btn {
+  background-color: #545097;
+  color: #fff;
+}
+
+.customerDetail.sectionStart {
+  padding: 10px;
+}
+.cLabel {
+  margin-left: 20px;
+}
+.sectionHeading {
+  margin-left: 10px;
+}
+
+.sectionStart {
+  margin-top: 20px;
+}
+
+.customerCategories {
+  background-color: #fd620f;
+  padding: 5px;
+  color: #fff;
+  border-radius: 10px;
+}
+#transactionTableContainer {
+  border-radius: 10px;
+  border: gray 1px solid;
+}
+.transactionHeader {
+  background-color: #ebebeb;
+}
+.customerCategories li{
+  list-style-type: none;
+}
+
+
