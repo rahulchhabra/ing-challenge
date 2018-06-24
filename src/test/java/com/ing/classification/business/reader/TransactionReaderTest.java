@@ -20,4 +20,9 @@ public class TransactionReaderTest {
     public void readTransactions() {
         assertEquals(2995, transactionReader.readTransactions().size());
     }
+
+    @Test
+    public void readTransactions_with_path() {
+        assertEquals(2997, transactionReader.readTransactions("data_1.txt").size());
+    }
 }
