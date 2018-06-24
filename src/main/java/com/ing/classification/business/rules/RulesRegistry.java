@@ -8,8 +8,22 @@ public class RulesRegistry {
 
     @Autowired
     AfternoonPersonRule afternoonPersonRule;
+    @Autowired
+    MorningPersonRule morningPersonRule;
+    @Autowired
+    BigSpenderRule bigSpenderRule;
+    @Autowired
+    BigTicketSpenderRule bigTicketSpenderRule;
+    @Autowired
+    FastSpenderRule fastSpenderRule;
+    @Autowired
+    PotentialSaverRule potentialSaverRule;
+    @Autowired
+    PotentialLoanRule potentialLoanRule;
 
     public ClassificationRule[] getRules() {
-        return new ClassificationRule[]{afternoonPersonRule};
+        return new ClassificationRule[]{afternoonPersonRule, bigSpenderRule,
+                bigTicketSpenderRule, fastSpenderRule, morningPersonRule,
+                potentialSaverRule, potentialLoanRule};
     }
 }
