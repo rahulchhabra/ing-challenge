@@ -1,4 +1,4 @@
-package com.example.springbootwithreactjs.controller;
+package com.ing.classification.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
