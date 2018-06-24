@@ -28,8 +28,15 @@
 
 .no-customer-data {
   margin-top: 30px;
+  text-align: center;
 }
 
+.search-bar {
+  margin: 10px
+}
+.search-bar .search-input {
+  margin: 0px 10px;
+}
 .submit-btn {
   background-color: #545097;
   color: #fff;

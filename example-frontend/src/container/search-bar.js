@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {loadCustomerClassification, loadCustomerBalance} from '../actions/index';
 
-class Search extends Component {
+class SearchBar extends Component {
 
   constructor(props) {
     super(props);
@@ -31,15 +31,15 @@ class Search extends Component {
     }
   render() {
     return (
-      <div className="Search">
+      <div className="search-bar">
         <form className='input-group' onSubmit={this.onSubmitHandler}>
             <input placeholder='Enter customer id here'
                    type='number'
-                   className='form-control'
+                   className='form-control search-input'
                    value={this.state.customerId}
                    onChange={this.onCustomerIdChange} />
             <input type='month'
-                   className='form-control'
+                   className='form-control search-input'
                    value={this.state.yearMonth}
                    onChange={this.onYearMonthChange} />
             <span className="input-group-btn">
@@ -55,4 +55,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ loadCustomerClassification, loadCustomerBalance} , dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(SearchBar);
