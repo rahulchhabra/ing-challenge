@@ -7,9 +7,12 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import javax.management.RuntimeErrorException;
 
 @Component
 public class TransactionReader {
@@ -19,7 +22,7 @@ public class TransactionReader {
     }
 
     public List<Transaction> readTransactions(String fileName) {
-        String filePath = getClass().getClassLoader().getResource(fileName).getPath();
+        String filePath = getFilePath(fileName);
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(filePath));
         ) {
@@ -33,4 +36,14 @@ public class TransactionReader {
         }
 
     }
+
+	private String getFilePath(String fileName) {
+		String filePath = null;
+		try {
+			filePath = Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toString();
+		} catch (URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
+		return filePath;
+	}
 }
